@@ -2,13 +2,15 @@
   "name": "aluracord",
   "version": "1.0.0",
   "main": "index.js",
+  "repository": "https://github.com/radymillacristiano/Aluracord.git",
+  "author": "Radymilla Cristiano <radymillacristiano534@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@skynexui/components": "^1.23.9",
     "next": "^12.0.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
-
   "scripts": {
     "dev": "next dev",
     "build": "next build",
