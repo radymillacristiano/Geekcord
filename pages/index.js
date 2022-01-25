@@ -66,7 +66,7 @@ function Title(props) {
 // export default HomePage
 
 export default function PaginaInicial() {
-  const username = 'peas'
+  const username = 'Radymilla'
 
   return (
     <>
@@ -76,9 +76,9 @@ export default function PaginaInicial() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: appConfig.theme.colors.primary[500],
+          // backgroundColor: appConfig.theme.colors.primary[500],
           backgroundImage:
-            'url(https://virtualbackgrounds.site/wp-content/uploads/2020/08/the-matrix-digital-rain.jpg)',
+            'url(https://c4.wallpaperflare.com/wallpaper/696/274/479/gradient-green-blue-violet-wallpaper-preview.jpg)',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           backgroundBlendMode: 'multiply'
@@ -115,7 +115,7 @@ export default function PaginaInicial() {
               marginBottom: '32px'
             }}
           >
-            <Title tag="h2">Boas vindas de volta!</Title>
+            <Title tag="h2">Boas vindas!</Title>
             <Text
               variant="body3"
               styleSheet={{
@@ -172,7 +172,7 @@ export default function PaginaInicial() {
                 borderRadius: '50%',
                 marginBottom: '16px'
               }}
-              src={`https://github.com/${username}.png`}
+              src={`https://github.com/radymillacristiano.png`}
             />
             <Text
               variant="body4"
