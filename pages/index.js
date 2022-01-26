@@ -1,41 +1,7 @@
 import { Box, Button, Text, TextField, Image } from '@skynexui/components'
 import React from 'react'
+import { useRouter } from 'next/router'
 import appConfig from '../config.json'
-
-function GlobalStyle() {
-  return (
-    <style global jsx>
-      {`
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          list-style: none;
-        }
-
-        body {
-          font-family: 'Open Sans', sans-serif;
-        }
-
-        /* App fit Height */
-        html,
-        body,
-        #__next {
-          min-height: 100vh;
-          display: flex;
-          flex: 1;
-        }
-        #__next {
-          flex: 1;
-        }
-        #__next > * {
-          flex: 1;
-        }
-        /* ./App fit Height */
-      `}
-    </style>
-  )
-}
 
 function Title(props) {
   const Tag = props.tag || 'h1'
@@ -66,15 +32,17 @@ function Title(props) {
 // }
 // export default HomePage
 
-export default function PaginaInicial() {
+export default function homePage() {
   // const username = 'radymillacristiano'
 
   // const para pegar o valor da variável e permitir que ela mude
-  const [username, setUsername]= React.useState('radymillacristiano');
+  const [username, setUsername] = React.useState('radymillacristiano')
+  const roteamento = useRouter()
+  const inputChange = (event => setUsername(event.target.value))
+
 
   return (
     <>
-      <GlobalStyle />
       <Box
         styleSheet={{
           display: 'flex',
@@ -109,6 +77,12 @@ export default function PaginaInicial() {
           {/* Formulário */}
           <Box
             as="form"
+            onSubmit={function (infosDoEvent) {
+              infosDoEvent.preventDefault()
+              console.log('submeteram algo')
+              roteamento.push('/chat')
+              // window.location.href = '/chat'
+            }}
             styleSheet={{
               display: 'flex',
               flexDirection: 'column',
@@ -140,24 +114,29 @@ export default function PaginaInicial() {
             }}
             /> */}
 
-            {<TextField
-            value={username}
-            onChange={function (event) {
-              // onde estar o valor
-              const valor = event.target.value;
-              // trocar valor pelo react
-              setUsername(valor);
-            }}
-              fullWidth
-              textFieldColors={{
-                neutral: {
-                  textColor: appConfig.theme.colors.neutrals[200],
-                  mainColor: appConfig.theme.colors.neutrals[900],
-                  mainColorHighlight: appConfig.theme.colors.primary[500],
-                  backgroundColor: appConfig.theme.colors.neutrals[800]
-                }
-              }}
-            /> }
+            {
+              <TextField
+                value={username}
+                placeholder='Digite seu usuário Github'
+                onChange={inputChange}
+                
+                // onChange={function (event) {
+                //   // onde estar o valor
+                //   const valor = event.target.value
+                //   // trocar valor pelo react
+                //   setUsername(valor)
+                // }}
+                fullWidth
+                textFieldColors={{
+                  neutral: {
+                    textColor: appConfig.theme.colors.neutrals[200],
+                    mainColor: appConfig.theme.colors.neutrals[900],
+                    mainColorHighlight: appConfig.theme.colors.primary[500],
+                    backgroundColor: appConfig.theme.colors.neutrals[800]
+                  }
+                }}
+              />
+            }
             <Button
               type="submit"
               label="Entrar"
@@ -193,7 +172,11 @@ export default function PaginaInicial() {
                 borderRadius: '50%',
                 marginBottom: '16px'
               }}
-              src={`https://github.com/${username}.png`}
+              src={
+                username.length > 2
+                  ? `https://github.com/${username}.png`
+                  : 'https://icons.veryicon.com/png/o/miscellaneous/two-color-webpage-small-icon/user-244.png'
+              }
             />
             <Text
               variant="body4"
