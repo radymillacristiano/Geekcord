@@ -1,1 +1,6 @@
-video 2 30:00
+Desafios
+
+[X] Não carregar imagem de user com menos de 2 caracteres
+[] Usar api do github para mostrar mais infos do user
+[] Colocar botão de envio no chat
+[] Colocar botão de excluir mensagem
