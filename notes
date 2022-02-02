@@ -4,3 +4,5 @@ Desafios
 [] Usar api do github para mostrar mais infos do user
 [] Colocar botão de envio no chat
 [] Colocar botão de excluir mensagem
+[] Mostrar o loading de mensagens
+[] Efeito de passar o mouse em cima (referência: https://pt-br.reactjs.org/docs/events.html#mouse-events)
