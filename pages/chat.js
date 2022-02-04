@@ -13,8 +13,9 @@ const supabaseCliente = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 function escutaMensagensEmTempoReal(adicionaMensagem) {
   return supabaseCliente
     .from('Mensagens')
-    .on('INSERT', () => {
-      console.log('Houve uma nova mensagem')
+    .on('INSERT', respostaLive => {
+      adicionaMensagem(respostaLive.new)
+      // console.log('Houve uma nova mensagem')
     })
     .subscribe()
 }
@@ -34,7 +35,12 @@ export default function ChatPage() {
         //   console.log('Dados da consulta:', data)
         setListaDeMensagens(data)
       })
-    escutaMensagensEmTempoReal()
+    escutaMensagensEmTempoReal(novaMensagem => {
+      console.log('Nova Mensagem', novaMensagem)
+      setListaDeMensagens(valorAtualDaLista => {
+        return [novaMensagem, ...valorAtualDaLista]
+      })
+    })
   }, [])
 
   /*
@@ -60,7 +66,7 @@ export default function ChatPage() {
       .from('Mensagens')
       .insert([mensagem])
       .then(({ data }) => {
-        setListaDeMensagens([data[0], ...listaDeMensagens])
+        // setListaDeMensagens([data[0], ...listaDeMensagens])
       })
 
     setMensagem('')
