@@ -40,7 +40,6 @@ export default function homePage() {
   const roteamento = useRouter()
   const inputChange = (event => setUsername(event.target.value))
 
-
   return (
     <>
       <Box
@@ -80,7 +79,7 @@ export default function homePage() {
             onSubmit={function (infosDoEvent) {
               infosDoEvent.preventDefault()
               console.log('submeteram algo')
-              roteamento.push('/chat')
+              roteamento.push(`/chat?username=${username}`)
               // window.location.href = '/chat'
             }}
             styleSheet={{
